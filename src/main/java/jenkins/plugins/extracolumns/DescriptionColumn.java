@@ -27,7 +27,7 @@ package jenkins.plugins.extracolumns;
 import org.kohsuke.stapler.DataBoundConstructor;
 
 import hudson.Extension;
-import hudson.model.Job;
+import hudson.model.AbstractItem;
 import hudson.views.ListViewColumnDescriptor;
 import hudson.views.ListViewColumn;
 
@@ -60,15 +60,15 @@ public class DescriptionColumn extends ListViewColumn {
         return displayLength;
     }
 
-    public String getToolTip(@SuppressWarnings("rawtypes") Job job) {
+    public String getToolTip(@SuppressWarnings("rawtypes") AbstractItem job) {
         return formatDescription(job, false);
     }
     
-    public String getDescription(@SuppressWarnings("rawtypes") Job job){
+    public String getDescription(@SuppressWarnings("rawtypes") AbstractItem job){
         return formatDescription(job, isTrim());
     }
     
-    private String formatDescription(@SuppressWarnings("rawtypes") Job job, boolean trimIt) {
+    private String formatDescription(@SuppressWarnings("rawtypes") AbstractItem job, boolean trimIt) {
         if (job == null) {
             return null;
         }
