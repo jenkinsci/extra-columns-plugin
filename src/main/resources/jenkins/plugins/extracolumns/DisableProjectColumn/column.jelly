@@ -25,17 +25,17 @@ THE SOFTWARE.
 <?jelly escape-by-default='true'?>
 <j:jelly xmlns:j="jelly:core" xmlns:st="jelly:stapler" xmlns:d="jelly:define" xmlns:l="/lib/layout" xmlns:t="/lib/hudson" xmlns:f="/lib/form" xmlns:i="jelly:fmt">
     <td>
-        <j:if test="${job.hasPermission(job.CONFIGURE)}">
+        <j:if test="${job.hasPermission(job.CONFIGURE) and job.supportsMakeDisabled()}">
             <!-- choose disabled state and enabled state -->
             <j:choose>
                 <j:when test="${job.disabled}">
-                    <j:set var="request" value="${job.Url}enable"/>
+                    <j:set var="request" value="${rootURL}/${job.Url}enable"/>
                     <j:set var="buttonText" value="${%Enable Project}"/>
                     <j:set var="iconText" value="${%Project disabled - Click to enable}"/>
                     <j:set var="icon" value="switch-off.png"/>
                 </j:when>
                 <j:otherwise>
-                    <j:set var="request" value="${job.Url}disable"/>
+                    <j:set var="request" value="${rootURL}/${job.Url}disable"/>
                     <j:set var="buttonText" value="${%Disable Project}"/>
                     <j:set var="iconText" value="${%Project enabled - Click to disable}"/>
                     <j:set var="icon" value="switch-on.png"/>
