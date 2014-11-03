@@ -27,8 +27,8 @@ THE SOFTWARE.
         xmlns:f="/lib/form">
     <f:block>
         <p>${%This column adds a custom link to the view.}</p>
-        <f:entry field="url" title="${%Link URL}"
-                help="/plugin/extra-columns/help-CustomLinkColumn-url.html">
+        <f:entry field="link" title="${%Link}"
+                help="/plugin/extra-columns/help-CustomLinkColumn-link.html">
             <f:textbox />
         </f:entry>
         <f:entry field="icon" title="${%Icon}">

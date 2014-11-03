@@ -25,8 +25,8 @@ THE SOFTWARE.
 <?jelly escape-by-default='true'?>
 <j:jelly xmlns:j="jelly:core">
     <td>
-        <a href="${jobBaseUrl}${job.shortUrl}${it.getUrl()}">
-            <img src="${rootURL}${it.getIcon()}" title="${it.getTitle()}" alt="${it.getTitle()}" border="0"/>
+        <a href="${rootURL}/${job.Url}${it.link}">
+            <img src="${rootURL}${it.icon}" title="${it.title}" alt="${it.title}" border="0"/>
         </a>
     </td>
 </j:jelly>

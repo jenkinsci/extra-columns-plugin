@@ -15,16 +15,16 @@ public class CustomLinkColumn extends ListViewColumn
     private String columnHeader;
     private String icon;
     private String title;
-    private String url;
+    private String link;
 
     @DataBoundConstructor
-    public CustomLinkColumn(final String columnHeader, final String icon, final String title, final String url)
+    public CustomLinkColumn(final String columnHeader, final String icon, final String title, final String link)
     {
         super();
         this.columnHeader = columnHeader;
         this.icon = icon;
         this.title = title;
-        this.url = url;
+        this.link = link;
     }
 
     public String getColumnHeader()
@@ -42,9 +42,9 @@ public class CustomLinkColumn extends ListViewColumn
         return title;
     }
 
-    public String getUrl()
+    public String getLink()
     {
-        return url;
+        return link;
     }
 
     @Extension
