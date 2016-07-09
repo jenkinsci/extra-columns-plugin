@@ -4,4 +4,4 @@ work
 .project
 .settings
 *.iml
-
+.idea/
