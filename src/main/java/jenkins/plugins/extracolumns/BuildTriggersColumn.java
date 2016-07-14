@@ -33,13 +33,14 @@ public class BuildTriggersColumn extends ListViewColumn {
     }
 
     public String getBuildTriggers(@SuppressWarnings("rawtypes") Job job) {
+        String upstreamTriggerName = jenkins.triggers.Messages.ReverseBuildTrigger_build_after_other_projects_are_built();
+
         StringBuilder result = new StringBuilder();
 
-        List<AbstractProject> upstream = getUpstreamProjects(job);
-        if (upstream != null && !upstream.isEmpty()) {
-            result.append(escape(jenkins.triggers.Messages.ReverseBuildTrigger_build_after_other_projects_are_built()))
-                    .append(": ");
-            append(result, upstream);
+        List<AbstractProject> upstreamProjects = getUpstreamProjects(job);
+        if (upstreamProjects != null && !upstreamProjects.isEmpty()) {
+            result.append(escape(upstreamTriggerName)).append(": ");
+            append(result, upstreamProjects);
         }
 
         Map<TriggerDescriptor, Trigger<?>> triggers = getTriggers(job);
@@ -47,6 +48,9 @@ public class BuildTriggersColumn extends ListViewColumn {
             boolean hasSourceCodeManagement = hasSourceCodeManagement(job);
 
             for (Map.Entry<TriggerDescriptor, Trigger<?>> trigger : triggers.entrySet()) {
+                if (upstreamTriggerName.equals(trigger.getKey().getDisplayName()))
+                    continue;
+
                 if (result.length() > 0)
                     result.append("<br>");
 
