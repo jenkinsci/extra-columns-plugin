@@ -31,7 +31,7 @@ It currently provides the following columns:
   * Options: Use pronoun
 * Last build
   * Shows last build
-  * Options: Build Start/End, Build Selector, Show relative times, Show link to build
+  * Options: Build Start/End, Build Selector, Show relative times, Show link to build, Show version info
 * Last build node
   * Shows last build node, where job was running
 * Last/current build console
@@ -79,6 +79,13 @@ See [GitHub releases](https://github.com/jenkinsci/extra-columns-plugin/releases
 ### How to configure a column
 
 Columns can be configured on the "Edit view" page. Please note, not all columns can be configured.
+
+### How to create version information for "Last Build"
+
+The version information will be extracted with regex pattern `[[ver(sion)?.+]]` in the build description.
+For instance, `[[version=1.2.3]]` or `[[ver:1.2.3]]`.
+The easiest way to set the description can be done in a pipeline. If you do not use pipelines, the install the
+\"Decription Setter Plugin\", write the version information in the Console Log and set it with the description setter in Post Build section. 
 
 ## Support
 

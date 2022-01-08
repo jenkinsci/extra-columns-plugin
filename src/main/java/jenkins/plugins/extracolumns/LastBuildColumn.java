@@ -25,6 +25,8 @@ package jenkins.plugins.extracolumns;
 
 import java.text.SimpleDateFormat;
 import java.util.GregorianCalendar;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import org.kohsuke.stapler.DataBoundConstructor;
 
@@ -42,20 +44,23 @@ public class LastBuildColumn extends ListViewColumn {
 
     private boolean useRelative = false;
     private boolean showLink = false;
+    private boolean showVersion = false;
 
     private static final String DATEFORMAT = "yyyy-MM-dd HH:mm:ss";
+    private static final String VERSION_PATTERN = "\\[{2}(ver(sion)?.+?)\\]{2}";
 
     @DataBoundConstructor
-    public LastBuildColumn(int sortType, int buildType, boolean useRelative, boolean showLink) {
+    public LastBuildColumn(int sortType, int buildType, boolean useRelative, boolean showLink, boolean showVersion) {
         super();
         this.sortType = sortType;
         this.buildType = buildType;
         this.useRelative = useRelative;
         this.showLink = showLink;
+        this.showVersion = showVersion;
     }
 
     public LastBuildColumn() {
-        this(0, 0, false, false);
+        this(0, 0, false, false, false);
     }
 
     public int getSortType(){
@@ -73,6 +78,11 @@ public class LastBuildColumn extends ListViewColumn {
     public boolean getShowLink() {
         return showLink;
     }
+
+    public boolean getShowVersion() {
+        return showVersion;
+    }
+
 
     public Run<?, ?> getBuild(Job <?, ?> job) {
         switch (getBuildType()) {
@@ -156,9 +166,21 @@ public class LastBuildColumn extends ListViewColumn {
         return Util.getPastTimeString(duration);
     }
 
+    public String getVersionInfoString(Run<?, ?> build){
+        final String description = build.getDescription();
+        if (description != null) {
+            Pattern contentPattern = Pattern.compile(VERSION_PATTERN);
+            Matcher contentMatches = contentPattern.matcher(description);
+            if (contentMatches.find()) {
+                return contentMatches.group(1).trim();
+            }
+        }
+        return null;
+    }
+
     @Extension
     public static class DescriptorImpl extends ListViewColumnDescriptor {
-
+        
         @Override
         public boolean shownByDefault() {
             return false;

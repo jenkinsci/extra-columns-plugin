@@ -49,5 +49,8 @@ THE SOFTWARE.
          <f:entry title="${%Show link to build}">
             <f:checkbox field="showLink" />
          </f:entry>
+         <f:entry title="${%Show version information}. ${%Extract text from description with pattern} [[ver(sion)?...]]. ${%The description can be set with the} 'Description Setter Plugin'.">
+            <f:checkbox field="showVersion" />
+         </f:entry>
     </f:block>
 </j:jelly>

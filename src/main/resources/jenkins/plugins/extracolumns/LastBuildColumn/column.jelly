@@ -39,19 +39,28 @@ THE SOFTWARE.
                     <j:set var="lastBuildString" value="${it.useRelative ? it.getLastBuildEndRelativeString(lastBuild) : it.getLastBuildEndAbsoluteString(lastBuild)}"/>
                 </j:when>
             </j:choose>
+            <j:set var="versionInfo" value="${it.getVersionInfoString(lastBuild)}"/>
        </j:when>
         <j:otherwise>
             <j:set var="sortData" value="0"/>
             <j:set var="lastBuildString" value="${%N/A}"/>
+            <j:set var="versionInfo" value=""/>
             <j:set var="tooltip" value="${%N/A}"/>
         </j:otherwise>
     </j:choose>
+    <td data="${sortData}" tooltip="${tooltip}">
     <j:choose>
         <j:when test="${it.showLink and lastBuild != null}">
-            <td data="${sortData}" tooltip="${tooltip}">${lastBuildString} - <a href="${jobBaseUrl}${job.shortUrl}${it.buildTypeUrl}/" class="model-link inside">${lastBuild.displayName}</a></td>
+            ${lastBuildString} -&#160;<a href="${jobBaseUrl}${job.shortUrl}${it.buildTypeUrl}/" class="model-link inside">${lastBuild.displayName}</a>
         </j:when>
         <j:otherwise>
-            <td data="${sortData}" tooltip="${tooltip}">${lastBuildString}</td>
+            ${lastBuildString}
         </j:otherwise>
     </j:choose>
+    <j:choose>
+        <j:when test="${it.showVersion and versionInfo != null and lastBuild != null}">
+            &#160; -&#160;${versionInfo}
+        </j:when>
+    </j:choose>
+    </td>
 </j:jelly>
