@@ -106,23 +106,24 @@ public class LastBuildColumn extends ListViewColumn {
     }
 
     public String getBuildTypeString() {
+        final String messageType = (getShowVersion() ? "Version" : "Build");
         switch (getBuildType()) {
         case 0:
-            return Messages.LastBuildColumn_LastBuild();
+            return Messages.LastBuildColumn_LastBuild(messageType);
         case 1:
-            return Messages.LastBuildColumn_LastCompletedBuild();
+            return Messages.LastBuildColumn_LastCompletedBuild(messageType);
         case 2:
-            return Messages.LastBuildColumn_LastFailedBuild();
+            return Messages.LastBuildColumn_LastFailedBuild(messageType);
         case 3:
-            return Messages.LastBuildColumn_LastSuccessfulBuild();
+            return Messages.LastBuildColumn_LastSuccessfulBuild(messageType);
         case 4:
-            return Messages.LastBuildColumn_LastUnsuccessfulBuild();
+            return Messages.LastBuildColumn_LastUnsuccessfulBuild(messageType);
         case 5:
-            return Messages.LastBuildColumn_LastStableBuild();
+            return Messages.LastBuildColumn_LastStableBuild(messageType);
         case 6:
-            return Messages.LastBuildColumn_LastUnstableBuild();
+            return Messages.LastBuildColumn_LastUnstableBuild(messageType);
         default:
-            return Messages.LastBuildColumn_LastBuild();
+            return Messages.LastBuildColumn_LastBuild(messageType);
         }
     }
 
