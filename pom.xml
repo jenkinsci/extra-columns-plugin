@@ -3,7 +3,8 @@
     <parent>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>plugin</artifactId>
-        <version>4.63</version>
+        <version>4.78</version>
+        <relativePath />
     </parent>
 
     <artifactId>extra-columns</artifactId>
@@ -16,7 +17,7 @@
         <revision>1.27</revision>
         <changelist>-SNAPSHOT</changelist>
         <gitHubRepo>jenkinsci/${project.artifactId}-plugin</gitHubRepo>
-        <jenkins.version>2.361.4</jenkins.version>
+        <jenkins.version>2.426.3</jenkins.version>
         <access-modifier-checker.skip>true</access-modifier-checker.skip>
     </properties>
 
@@ -57,8 +58,8 @@
         <dependencies>
             <dependency>
                 <groupId>io.jenkins.tools.bom</groupId>
-                <artifactId>bom-2.361.x</artifactId>
-                <version>2081.v85885a_d2e5c5</version>
+                <artifactId>bom-2.426.x</artifactId>
+                <version>2839.v003b_4d9d24fd</version>
                 <scope>import</scope>
                 <type>pom</type>
             </dependency>

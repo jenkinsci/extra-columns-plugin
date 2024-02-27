@@ -108,8 +108,8 @@ public class CronTriggerColumn extends ListViewColumn {
                 return toolTip;
             }
             return Messages.CronTriggerColumn_ToolTipFormat(fmt.format(previous.getTime()), fmt.format(next.getTime()));
-        } catch (antlr.ANTLRException ex) {
-            LOGGER.log(Level.WARNING, "ANTLRException: %s", ex);
+        } catch (IllegalArgumentException ex) {
+            LOGGER.log(Level.WARNING, "IllegalArgumentException: %s", ex);
         }
 
         return toolTip;
