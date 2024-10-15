@@ -45,12 +45,14 @@ THE SOFTWARE.
             <!-- choose between icon and button -->
             <j:choose>
                 <j:when test="${it.useIcon()}">
-                    <img src="${rootURL}/plugin/extra-columns/images/${iconSize}/${icon}" title="${iconText}" alt="${iconText}" border="0" onclick="${onClickCode}"/>
+                  <img src="${rootURL}/plugin/extra-columns/images/${iconSize}/${icon}" class="ec-toggle-project" tooltip="${iconText}" alt="${iconText}" border="0" data-request="${request}"/>
                 </j:when>
                 <j:otherwise>
-                    <input type="button" class="submit-button" value="${buttonText}" onclick="${onClickCode}"/>
+                  <button type="button" class="jenkins-button jenkins-button--primary ec-toggle-project" data-request="${request}">${buttonText}</button>
                 </j:otherwise>
             </j:choose>
+            <st:adjunct includes="jenkins.plugins.extracolumns.DisableProjectColumn.button"/>
        </j:if>
+
     </td> 
 </j:jelly>
