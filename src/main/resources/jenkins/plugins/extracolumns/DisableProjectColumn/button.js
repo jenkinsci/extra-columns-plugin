@@ -1,5 +1,5 @@
 Behaviour.specify(".ec-toggle-project", "extra-column-toggle-project", 0, function (e) {
-  e.addEventListener("click", function (ev) {
+  e.addEventListener("click", function () {
     const request = e.dataset.request;
     fetch(request, {
       method: "post",
