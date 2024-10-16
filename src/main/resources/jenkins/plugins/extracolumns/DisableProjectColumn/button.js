@@ -1,5 +1,5 @@
 Behaviour.specify(".ec-toggle-project", "extra-column-toggle-project", 0, function (e) {
-  e.onclick = function () {
+  e.addEventListener("click", function (e) {
     const request = e.dataset.request;
     fetch(request, {
       method: "post",
@@ -8,5 +8,5 @@ Behaviour.specify(".ec-toggle-project", "extra-column-toggle-project", 0, functi
       }),
     });
     setTimeout("window.location.reload()", 1000);
-  };
+  });
 });
