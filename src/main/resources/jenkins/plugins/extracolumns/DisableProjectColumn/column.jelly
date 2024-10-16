@@ -41,7 +41,6 @@ THE SOFTWARE.
                     <j:set var="icon" value="switch-on.png"/>
                 </j:otherwise>
             </j:choose>
-            <j:set var="onClickCode" value="javascript:fetch('${request}', {method: 'post', headers: crumb.wrap({'Content-Type': 'application/x-www-form-urlencoded'})});setTimeout('window.location.reload()', 1000)"/>
             <!-- choose between icon and button -->
             <j:choose>
                 <j:when test="${it.useIcon()}">
