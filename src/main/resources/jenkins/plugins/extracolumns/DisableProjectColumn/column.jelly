@@ -32,19 +32,17 @@ THE SOFTWARE.
                     <j:set var="request" value="${rootURL}/${job.Url}enable"/>
                     <j:set var="buttonText" value="${%Enable Project}"/>
                     <j:set var="iconText" value="${%Project disabled - Click to enable}"/>
-                    <j:set var="icon" value="switch-off.png"/>
                 </j:when>
                 <j:otherwise>
                     <j:set var="request" value="${rootURL}/${job.Url}disable"/>
                     <j:set var="buttonText" value="${%Disable Project}"/>
                     <j:set var="iconText" value="${%Project enabled - Click to disable}"/>
-                    <j:set var="icon" value="switch-on.png"/>
                 </j:otherwise>
             </j:choose>
             <!-- choose between icon and button -->
             <j:choose>
                 <j:when test="${it.useIcon()}">
-                    <img src="${rootURL}/plugin/extra-columns/images/${iconSize}/${icon}" class="ec-toggle-project" tooltip="${iconText}" alt="${iconText}" border="0" data-request="${request}"/>
+                    <f:toggleSwitch checked="${!job.disabled}" title="" tooltip="${iconText}" class="ec-toggle-project" checkUrl="${request}" checkDependsOn="" />
                 </j:when>
                 <j:otherwise>
                     <button type="button" class="jenkins-button jenkins-button--primary ec-toggle-project" data-request="${request}">${buttonText}</button>
@@ -53,4 +51,6 @@ THE SOFTWARE.
             <st:adjunct includes="jenkins.plugins.extracolumns.DisableProjectColumn.button"/>
        </j:if>
     </td> 
+
+    <st:adjunct includes="jenkins.plugins.extracolumns.DisableProjectColumn.disable-project"/>
 </j:jelly>

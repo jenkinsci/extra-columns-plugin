@@ -26,9 +26,6 @@ THE SOFTWARE.
 <j:jelly xmlns:j="jelly:core" xmlns:st="jelly:stapler" xmlns:d="jelly:define" xmlns:l="/lib/layout" xmlns:t="/lib/hudson" xmlns:f="/lib/form" xmlns:i="jelly:fmt">
     <f:block>
         <tr>
-            <td width="50">
-               <img src="${rootURL}/plugin/extra-columns/images/48x48/switch-on.png" title="${%Enable/disable project icon}" alt="${%Enable/disable project icon}" border="0"/>
-           </td>
             <td colspan="2">
                 <p>${%This column adds a button or an icon for disabling/enabling a project.}</p>
                 <table>
