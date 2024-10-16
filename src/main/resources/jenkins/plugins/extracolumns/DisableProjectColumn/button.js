@@ -1,6 +1,7 @@
 Behaviour.specify(".ec-toggle-project", "extra-column-toggle-project", 0, function (e) {
   e.addEventListener("click", function () {
-    const request = e.dataset.request;
+    const request = e.dataset.request !== undefined ? e.dataset.request : e.getAttribute("checkUrl");
+
     fetch(request, {
       method: "post",
       headers: crumb.wrap({
