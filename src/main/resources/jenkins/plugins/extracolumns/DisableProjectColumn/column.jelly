@@ -51,6 +51,4 @@ THE SOFTWARE.
             <st:adjunct includes="jenkins.plugins.extracolumns.DisableProjectColumn.button"/>
        </j:if>
     </td> 
-
-    <st:adjunct includes="jenkins.plugins.extracolumns.DisableProjectColumn.disable-project"/>
 </j:jelly>
