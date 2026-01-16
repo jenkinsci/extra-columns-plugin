@@ -4,7 +4,7 @@
     <parent>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>plugin</artifactId>
-        <version>5.28</version>
+        <version>6.2116.v7501b_67dc517</version>
         <relativePath />
     </parent>
 
@@ -22,6 +22,7 @@
         <jenkins.baseline>2.479</jenkins.baseline>
         <jenkins.version>${jenkins.baseline}.3</jenkins.version>
         <access-modifier-checker.skip>true</access-modifier-checker.skip>
+        <ban-commons-lang-2.skip>false</ban-commons-lang-2.skip>
     </properties>
 
     <developers>
