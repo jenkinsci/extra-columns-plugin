@@ -26,12 +26,10 @@
 <j:jelly xmlns:j="jelly:core" xmlns:st="jelly:stapler" xmlns:d="jelly:define"
     xmlns:l="/lib/layout" xmlns:t="/lib/hudson" xmlns:f="/lib/form"
     xmlns:i="jelly:fmt" xmlns:p="/lib/hudson/project">
-    <f:block>
-        <p>${%This column shows either all build parameters or build parameters matching a regular expression of the current/last build.}</p>
+  <div><p>${%This column shows either all build parameters or build parameters matching a regular expression of the current/last build.}</p></div>
         <f:optionalBlock field="useRegex" title="${%Use regular expression}" inline="true">
             <f:entry field="regex" title="${%Regular expression}" default="">
                 <f:textbox />
             </f:entry>
         </f:optionalBlock>
-    </f:block>
 </j:jelly>

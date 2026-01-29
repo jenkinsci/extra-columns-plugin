@@ -28,7 +28,7 @@ THE SOFTWARE.
         <j:if test="${job.hasPermission(job.READ)}">
             <j:if test="${job.getLastBuild() != null}">
                 <a href="${jobBaseUrl}${job.shortUrl}lastBuild/console#footer">
-                    <l:icon class="icon-terminal ${subIconSizeClass}" title="${%Last/current build console output}" alt="${%Last/current build console output}" />
+                    <l:icon src="symbol-terminal" class="${subIconSizeClass}" tooltip="${%Last/current build console output}" alt="${%Last/current build console output}" />
                 </a>
             </j:if>
         </j:if>

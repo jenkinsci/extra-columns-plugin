@@ -45,22 +45,21 @@ public class SCMTypeColumn extends ListViewColumn {
     }
 
     public String getScmType(@SuppressWarnings("rawtypes") Job job) {
-        if(job instanceof AbstractProject<?, ?>) {
-            AbstractProject<?, ?> project = (AbstractProject<?, ?>) job;
+        if(job instanceof AbstractProject<?, ?> project) {
             return project.getScm().getDescriptor().getDisplayName();
         } else {
             String simpleName = job.getClass().getSimpleName();
             if ("WorkflowJob".equals(simpleName)) {
-                Jenkins instance = Jenkins.getInstance();
-                if (instance != null && instance.getPlugin("workflow-job") != null) {
+                Jenkins instance = Jenkins.get();
+                if (instance.getPlugin("workflow-job") != null) {
                     org.jenkinsci.plugins.workflow.job.WorkflowJob wfj = (org.jenkinsci.plugins.workflow.job.WorkflowJob) job;
                     Collection<? extends SCM> scms = wfj.getSCMs();
-                    if (scms.size() == 0) {
+                    if (scms.isEmpty()) {
                         return "N/A";
                     }
-                    StringBuffer sb = new StringBuffer();
+                    StringBuilder sb = new StringBuilder();
                     for (SCM scm : scms) {
-                        sb.append(scm.getDescriptor().getDisplayName() + "\n");
+                        sb.append(scm.getDescriptor().getDisplayName()).append("\n");
                     }
                     return sb.toString();
                 }

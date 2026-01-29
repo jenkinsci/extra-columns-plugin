@@ -27,7 +27,7 @@ THE SOFTWARE.
     <td>
         <j:if test="${job.hasPermission(job.CONFIGURE)}">
             <a href="${jobBaseUrl}${job.shortUrl}configure">
-                <l:icon class="icon-gear ${subIconSizeClass}" title="${%Configure project}" alt="${%Configure project}"/>
+                <l:icon src="symbol-settings" class="${subIconSizeClass}" title="${%Configure project}" alt="${%Configure project}"/>
             </a>
         </j:if>
     </td>

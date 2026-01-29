@@ -93,7 +93,7 @@ public class DescriptionColumn extends ListViewColumn {
             return "";
         }
 
-        StringBuffer sb = new StringBuffer();
+        StringBuilder sb = new StringBuilder();
         if (!trimIt) {
             sb.append(job.getDescription());
         } else {

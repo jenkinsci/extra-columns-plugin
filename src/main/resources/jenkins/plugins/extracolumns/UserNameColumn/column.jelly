@@ -31,10 +31,10 @@ THE SOFTWARE.
               <span>N/A</span>
           </j:when>
           <j:when test="${userIdCause != null and (userIdCause.userId == null or userIdCause.userId eq '')}">
-              <a href="${rootURL}/user/${userIdCause.userName}" title="${userIdCause.userName}">${userIdCause.userName}</a>
+              <span>${userIdCause.userName}</span>
           </j:when>
           <j:otherwise>
-              <a href="${rootURL}/user/${userIdCause.userId}" title="${userIdCause.userName} (${userIdCause.userId})">${userIdCause.userName}</a>
+              <a href="${rootURL}/user/${userIdCause.userId}" class="jenkins-table__link model-link" tooltip="${userIdCause.userName} (${userIdCause.userId})">${userIdCause.userName}</a>
           </j:otherwise>
         </j:choose>
     </td>
