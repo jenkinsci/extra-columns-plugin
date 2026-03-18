@@ -24,30 +24,33 @@ THE SOFTWARE.
 
 <?jelly escape-by-default='true'?>
 <j:jelly xmlns:j="jelly:core" xmlns:st="jelly:stapler" xmlns:d="jelly:define" xmlns:l="/lib/layout" xmlns:t="/lib/hudson" xmlns:f="/lib/form" xmlns:i="jelly:fmt">
-    <f:block>
-        <p>${%This column shows the last build.}</p>
-        <f:entry title="${%Build Start/End}">
-            <select name="sortType" class="setting-input">
-                <f:option value="0" selected="${instance.sortType==0}">${%Build start}</f:option>
-                <f:option value="1" selected="${instance.sortType==1}">${%Build end}</f:option>
-            </select>
-         </f:entry>
-         <f:entry title="${%Build Selector}">
-            <select name="buildType" class="setting-input">
-                <f:option value="0" selected="${instance.buildType==0}">${%Last build}</f:option>
-                <f:option value="1" selected="${instance.buildType==1}">${%Last completed build}</f:option>
-                <f:option value="2" selected="${instance.buildType==2}">${%Last failed build}</f:option>
-                <f:option value="3" selected="${instance.buildType==3}">${%Last successful build}</f:option>
-                <f:option value="4" selected="${instance.buildType==4}">${%Last unsuccessful build}</f:option>
-                <f:option value="5" selected="${instance.buildType==5}">${%Last stable build}</f:option>
-                <f:option value="6" selected="${instance.buildType==6}">${%Last unstable build}</f:option>
-            </select>
-         </f:entry>
-         <f:entry title="${%Show relative times}">
-            <f:checkbox field="useRelative" />
-         </f:entry>
-         <f:entry title="${%Show link to build}">
-            <f:checkbox field="showLink" />
-         </f:entry>
-    </f:block>
+
+  <div><p>${%This column shows the last build.}</p></div>
+  <f:entry title="${%Build Start/End}">
+    <div class="jenkins-select">
+      <select name="sortType" class="jenkins-select__input">
+          <f:option value="0" selected="${instance.sortType==0}">${%Build start}</f:option>
+          <f:option value="1" selected="${instance.sortType==1}">${%Build end}</f:option>
+      </select>
+    </div>
+   </f:entry>
+   <f:entry title="${%Build Selector}">
+     <div class="jenkins-select">
+      <select name="buildType" class="jenkins-select__input">
+          <f:option value="0" selected="${instance.buildType==0}">${%Last build}</f:option>
+          <f:option value="1" selected="${instance.buildType==1}">${%Last completed build}</f:option>
+          <f:option value="2" selected="${instance.buildType==2}">${%Last failed build}</f:option>
+          <f:option value="3" selected="${instance.buildType==3}">${%Last successful build}</f:option>
+          <f:option value="4" selected="${instance.buildType==4}">${%Last unsuccessful build}</f:option>
+          <f:option value="5" selected="${instance.buildType==5}">${%Last stable build}</f:option>
+          <f:option value="6" selected="${instance.buildType==6}">${%Last unstable build}</f:option>
+      </select>
+     </div>
+   </f:entry>
+   <f:entry title="${%Show relative times}">
+      <f:checkbox field="useRelative" />
+   </f:entry>
+   <f:entry title="${%Show link to build}">
+      <f:checkbox field="showLink" />
+   </f:entry>
 </j:jelly>

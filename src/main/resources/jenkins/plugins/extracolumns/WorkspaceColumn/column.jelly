@@ -35,8 +35,8 @@ THE SOFTWARE.
     <td>
         <j:if test="${job.hasPermission(job.WORKSPACE) and it.showWorkspace(job)}">
           <a href="${ws_url}">
-              <l:icon class="icon-folder ${subIconSizeClass}" title="${%Workspace}" alt="${%Workspace}" />
-                </a>
+              <l:icon class="icon-folder ${subIconSizeClass}" tooltip="${%Workspace}" alt="${%Workspace}" />
+          </a>
         </j:if>
     </td>
 </j:jelly>

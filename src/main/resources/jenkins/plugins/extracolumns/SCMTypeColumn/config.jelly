@@ -24,7 +24,5 @@
 
 <?jelly escape-by-default='true'?>
 <j:jelly xmlns:j="jelly:core" xmlns:f="/lib/form">
-    <f:block>
-        <p>${%This column shows the type of source code management that is used.}</p>
-    </f:block>
+  <p>${%This column shows the type of source code management that is used.}</p>
 </j:jelly>

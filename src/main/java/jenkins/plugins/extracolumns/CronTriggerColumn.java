@@ -61,10 +61,8 @@ public class CronTriggerColumn extends ListViewColumn {
         }
 
         Map<TriggerDescriptor, Trigger<?>> triggers = null;
-        if (job instanceof AbstractProject) {
-            triggers  = ((AbstractProject<?, ?>) job).getTriggers();
-        } if (job instanceof ParameterizedJobMixIn.ParameterizedJob) {
-            triggers = ((ParameterizedJobMixIn.ParameterizedJob)job).getTriggers();
+        if (job instanceof ParameterizedJobMixIn.ParameterizedJob<?, ?> pj) {
+            triggers = pj.getTriggers();
         }
 
         if (triggers == null) {

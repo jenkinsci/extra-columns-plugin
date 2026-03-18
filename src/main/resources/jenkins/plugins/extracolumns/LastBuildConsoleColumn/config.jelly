@@ -24,14 +24,6 @@ THE SOFTWARE.
 
 <?jelly escape-by-default='true'?>
 <j:jelly xmlns:j="jelly:core" xmlns:f="/lib/form" xmlns:l="/lib/layout">
-    <f:block>
-        <tr>
-            <td width="50">
-                <l:icon class="icon-terminal icon-xlg" title="${%Last/current build console output icon}" alt="${%Last/current build console output icon}"/>
-            </td>
-            <td colspan="2">
-                <p>${%This column adds a shortcut to the console output of the last/current build.}</p>
-            </td>
-        </tr>
-    </f:block>
+  <l:icon src="symbol-terminal" class="icon-xlg" alt="${%Last/current build console output icon}"/>
+  <p>${%This column adds a shortcut to the console output of the last/current build.}</p>
 </j:jelly>

@@ -56,5 +56,5 @@ THE SOFTWARE.
             </j:choose>
        </j:when>
     </j:choose>
-    <td data="${sortData}" tooltip="${naTooltip}">${buildDurationString}</td>
+  <td data="${sortData}"><span tooltip="${naTooltip}">${buildDurationString}</span></td>
 </j:jelly>

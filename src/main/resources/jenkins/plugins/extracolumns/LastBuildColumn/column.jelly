@@ -48,10 +48,10 @@ THE SOFTWARE.
     </j:choose>
     <j:choose>
         <j:when test="${it.showLink and lastBuild != null}">
-            <td data="${sortData}" tooltip="${tooltip}">${lastBuildString} - <a href="${jobBaseUrl}${job.shortUrl}${it.buildTypeUrl}/" class="model-link inside">${lastBuild.displayName}</a></td>
+          <td data="${sortData}"><span tooltip="${tooltip}">${lastBuildString}</span> <a href="${jobBaseUrl}${job.shortUrl}${it.buildTypeUrl}/" class="jenkins-table__link jenkins-table__badge model-link inside">${lastBuild.displayName}</a></td>
         </j:when>
         <j:otherwise>
-            <td data="${sortData}" tooltip="${tooltip}">${lastBuildString}</td>
+          <td data="${sortData}"><span tooltip="${tooltip}">${lastBuildString}</span></td>
         </j:otherwise>
     </j:choose>
 </j:jelly>
