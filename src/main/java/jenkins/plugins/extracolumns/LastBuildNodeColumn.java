@@ -26,6 +26,7 @@ package jenkins.plugins.extracolumns;
 import edu.umd.cs.findbugs.annotations.NonNull;
 import jenkins.model.Jenkins;
 
+import org.jenkinsci.plugins.workflow.job.WorkflowRun;
 import org.kohsuke.stapler.DataBoundConstructor;
 
 import hudson.Extension;
@@ -35,6 +36,9 @@ import hudson.model.Node;
 import hudson.model.Run;
 import hudson.views.ListViewColumn;
 import hudson.views.ListViewColumnDescriptor;
+import io.jenkins.plugins.agent_build_history.HistoryAction;
+
+import java.util.Set;
 
 public class LastBuildNodeColumn extends ListViewColumn {
 
@@ -43,18 +47,25 @@ public class LastBuildNodeColumn extends ListViewColumn {
         super();
     }
 
-    public String getLastBuildNode(Job<?, ?> job) {
+    public Set<String> getLastBuildNodes(Job<?, ?> job) {
         Run<?, ?> lastBuild = job.getLastBuild();
         if (lastBuild instanceof AbstractBuild<?, ?> ab) {
             Node builtOn = ab.getBuiltOn();
             if (builtOn instanceof Jenkins) {
-                return "master";
+                return Set.of("master");
             }
             if (builtOn != null) {
-                return builtOn.getDisplayName();
+                return Set.of(builtOn.getDisplayName());
             }
-        } 
-        return null;
+        }
+        
+        if (lastBuild instanceof WorkflowRun) {
+            var historyAction = ((WorkflowRun) lastBuild).getAction(HistoryAction.class);
+            if (historyAction != null) {
+                return historyAction.getAgents();
+            }
+        }
+        return Set.of();
     }
 
     public String getLastBuildNodeDescription(Job<?, ?> job) {
