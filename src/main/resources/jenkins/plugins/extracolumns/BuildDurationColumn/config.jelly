@@ -24,14 +24,14 @@ THE SOFTWARE.
 
 <?jelly escape-by-default='true'?>
 <j:jelly xmlns:j="jelly:core" xmlns:st="jelly:stapler" xmlns:d="jelly:define" xmlns:l="/lib/layout" xmlns:t="/lib/hudson" xmlns:f="/lib/form" xmlns:i="jelly:fmt">
-    <f:block>
-        <p>${%This column shows the last build duration.}</p>
+        <div><p>${%This column shows the last build duration.}</p></div>
         <f:entry title="${%Show}">
-            <select name="buildDurationType" class="setting-input">
+          <div class="jenkins-select">
+            <select name="buildDurationType" class="jenkins-select__input">
                 <f:option value="0" selected="${instance.buildDurationType==0}">${%Time since build started}</f:option>
                 <f:option value="1" selected="${instance.buildDurationType==1}">${%Average duration}</f:option>
                 <f:option value="2" selected="${instance.buildDurationType==2}">${%Average duration in minutes-compact}</f:option>
             </select>
+          </div>
          </f:entry>
-    </f:block>
 </j:jelly>

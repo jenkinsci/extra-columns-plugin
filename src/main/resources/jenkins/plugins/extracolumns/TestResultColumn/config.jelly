@@ -24,17 +24,17 @@ THE SOFTWARE.
 
 <?jelly escape-by-default='true'?>
 <j:jelly xmlns:j="jelly:core" xmlns:st="jelly:stapler" xmlns:d="jelly:define" xmlns:l="/lib/layout" xmlns:t="/lib/hudson" xmlns:f="/lib/form" xmlns:i="jelly:fmt">
-    <f:block>
-        <p>${%This column shows the test result of the last build.}</p>
-        <f:entry title="${%Test result format}">
-            <select name="testResultFormat" class="setting-input">
-                <f:option value="0" selected="${instance.testResultFormat==0}">${%TestFormat1}</f:option>
-                <f:option value="1" selected="${instance.testResultFormat==1}">${%TestFormat2}</f:option>
-                <f:option value="2" selected="${instance.testResultFormat==2}">${%Total tests}</f:option>
-                <f:option value="3" selected="${instance.testResultFormat==3}">${%Failed tests}</f:option>
-                <f:option value="4" selected="${instance.testResultFormat==4}">${%Passed tests}</f:option>
-                <f:option value="5" selected="${instance.testResultFormat==5}">${%Skipped tests}</f:option>
-            </select>
-         </f:entry>
-    </f:block>
+  <div><p>${%This column shows the test result of the last build.}</p></div>
+  <f:entry title="${%Test result format}">
+    <div class="jenkins-select">
+      <select name="testResultFormat" class="jenkins-select__input">
+          <f:option value="0" selected="${instance.testResultFormat==0}">${%TestFormat1}</f:option>
+          <f:option value="1" selected="${instance.testResultFormat==1}">${%TestFormat2}</f:option>
+          <f:option value="2" selected="${instance.testResultFormat==2}">${%Total tests}</f:option>
+          <f:option value="3" selected="${instance.testResultFormat==3}">${%Failed tests}</f:option>
+          <f:option value="4" selected="${instance.testResultFormat==4}">${%Passed tests}</f:option>
+          <f:option value="5" selected="${instance.testResultFormat==5}">${%Skipped tests}</f:option>
+      </select>
+    </div>
+  </f:entry>
 </j:jelly>
