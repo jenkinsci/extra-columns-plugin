@@ -34,7 +34,7 @@ THE SOFTWARE.
               <span>N/A</span>
           </j:when>
           <j:otherwise>
-              <a href="${rootURL}/computer/${node}">${node}</a>
+              <a href="${rootURL}/computer/${node}" data-html-tooltip="${app.markupFormatter.translate(it.getLastBuildNodeDescription(job))}">${node}</a>
           </j:otherwise>
         </j:choose>
     </td>

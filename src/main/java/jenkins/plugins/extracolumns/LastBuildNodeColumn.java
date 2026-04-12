@@ -56,6 +56,17 @@ public class LastBuildNodeColumn extends ListViewColumn {
         return null;
     }
 
+    public String getLastBuildNodeDescription(Job<?, ?> job) {
+        Run<?, ?> lastBuild = job.getLastBuild();
+        if (lastBuild instanceof AbstractBuild<?, ?> ab) {
+            Node builtOn = ab.getBuiltOn();
+            if (builtOn != null) {
+                return builtOn.getNodeDescription();
+            }
+        }
+        return null;
+    }
+
     @Extension
     public static class DescriptorImpl extends ListViewColumnDescriptor {
 
