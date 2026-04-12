@@ -24,14 +24,6 @@ THE SOFTWARE.
 
 <?jelly escape-by-default='true'?>
 <j:jelly xmlns:j="jelly:core" xmlns:f="/lib/form" xmlns:l="/lib/layout">
-    <f:block>
-        <tr>
-            <td width="50">
-                <l:icon class="icon-computer icon-xlg" title="${%Last build node icon}" alt="${%Last build node icon}"/>
-            </td>
-            <td colspan="2">
-                <p>${%This column shows the name of the node on which the last build was executed.}</p>
-            </td>
-        </tr>
-    </f:block>
+  <l:icon src="symbol-computer" class="icon-xlg" alt="${%Last build node icon}"/>
+  <p>${%This column shows the name of the node on which the last build was executed.}</p>
 </j:jelly>

@@ -24,14 +24,6 @@ THE SOFTWARE.
 
 <?jelly escape-by-default='true'?>
 <j:jelly xmlns:j="jelly:core" xmlns:f="/lib/form" xmlns:l="/lib/layout">
-    <f:block>
-        <tr>
-            <td width="50">
-                <l:icon class="icon-folder icon-xlg" title="${%Workspace icon}" alt="${%Workspace icon}" />
-            </td>
-            <td colspan="2">
-                <p>${%This column provides a link to the workspace.}</p>
-            </td>
-        </tr>
-    </f:block>
+    <l:icon src="symbol-folder" class="icon-xlg" alt="${%Workspace icon}" />
+    <p>${%This column provides a link to the workspace.}</p>
 </j:jelly>

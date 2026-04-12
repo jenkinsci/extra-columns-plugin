@@ -26,26 +26,18 @@
 <j:jelly xmlns:j="jelly:core" xmlns:st="jelly:stapler" xmlns:d="jelly:define"
     xmlns:l="/lib/layout" xmlns:t="/lib/hudson" xmlns:f="/lib/form"
     xmlns:i="jelly:fmt" xmlns:p="/lib/hudson/project">
-    <f:block>
-        <table>
-            <tr>
-                <td colspan="3">${%This column shows the project description.}</td>
-            </tr>
-            <tr>
-                <td colspan="3">
-                    <f:checkbox field="displayName" title="${%DescriptionColumn.DisplayName}" />
-                </td>
-            </tr>
-            <f:optionalBlock field="trim" title="${%DescriptionColumn.Trim}" inline="true">
-                <f:entry title="${%DescriptionColumn.DisplayLength}">
-                    <f:textbox field="displayLength" default="1" />
-                </f:entry>
-            </f:optionalBlock>
-            <f:optionalBlock field="forceWidth" title="${%Force column width}" inline="true">
-                <f:entry title="${%Column width}">
-                    <f:textbox field="columnWidth" default="80" />
-                </f:entry>
-            </f:optionalBlock>
-        </table>
-    </f:block>
+    <div><p>${%This column shows the project description.}</p></div>
+    <f:entry>
+      <f:checkbox field="displayName" title="${%DescriptionColumn.DisplayName}" />
+    </f:entry>
+    <f:optionalBlock field="trim" title="${%DescriptionColumn.Trim}" inline="true">
+        <f:entry title="${%DescriptionColumn.DisplayLength}">
+            <f:textbox field="displayLength" default="1" />
+        </f:entry>
+    </f:optionalBlock>
+    <f:optionalBlock field="forceWidth" title="${%Force column width}" inline="true">
+        <f:entry title="${%Column width}">
+            <f:textbox field="columnWidth" default="80" />
+        </f:entry>
+    </f:optionalBlock>
 </j:jelly>
