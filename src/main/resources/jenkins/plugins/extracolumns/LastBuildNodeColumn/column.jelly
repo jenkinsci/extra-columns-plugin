@@ -27,14 +27,14 @@ THE SOFTWARE.
     <td>
         <j:set var="node" value="${it.getLastBuildNode(job)}" />
         <j:choose>
-          <j:when test="${'master'eq node}">
-              <a href="${rootURL}/computer/(master)">Master</a>
+          <j:when test="${'master' eq node}">
+              <a href="${rootURL}/computer/(built-in)/" class="jenkins-table__link model-link">${%Built-In Node}</a>
           </j:when>
           <j:when test="${node == null}">
               <span>N/A</span>
           </j:when>
           <j:otherwise>
-              <a href="${rootURL}/computer/${node}">${node}</a>
+              <a href="${rootURL}/computer/${node}/" class="jenkins-table__link model-link">${node}</a>
           </j:otherwise>
         </j:choose>
     </td>
