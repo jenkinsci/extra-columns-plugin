@@ -23,6 +23,7 @@
  */
 package jenkins.plugins.extracolumns;
 
+import edu.umd.cs.findbugs.annotations.NonNull;
 import java.text.SimpleDateFormat;
 import java.util.GregorianCalendar;
 
@@ -37,11 +38,11 @@ import hudson.views.ListViewColumnDescriptor;
 
 public class LastBuildColumn extends ListViewColumn {
 
-    private int sortType = 0;
-    private int buildType = 0;
+    private final int sortType;
+    private final int buildType;
 
-    private boolean useRelative = false;
-    private boolean showLink = false;
+    private final boolean useRelative;
+    private final boolean showLink;
 
     private static final String DATEFORMAT = "yyyy-MM-dd HH:mm:ss";
 
@@ -75,66 +76,39 @@ public class LastBuildColumn extends ListViewColumn {
     }
 
     public Run<?, ?> getBuild(Job <?, ?> job) {
-        switch (getBuildType()) {
-        case 0:
-            return job.getLastBuild();
-        case 1:
-            return job.getLastCompletedBuild();
-        case 2:
-            return job.getLastFailedBuild();
-        case 3:
-            return job.getLastSuccessfulBuild();
-        case 4:
-            return job.getLastUnsuccessfulBuild();
-        case 5:
-            return job.getLastStableBuild();
-        case 6:
-            return job.getLastUnstableBuild();
-        default:
-            return job.getLastBuild();
-        }
+        return switch (getBuildType()) {
+            case 1 -> job.getLastCompletedBuild();
+            case 2 -> job.getLastFailedBuild();
+            case 3 -> job.getLastSuccessfulBuild();
+            case 4 -> job.getLastUnsuccessfulBuild();
+            case 5 -> job.getLastStableBuild();
+            case 6 -> job.getLastUnstableBuild();
+            default -> job.getLastBuild();
+        };
     }
 
     public String getBuildTypeString() {
-        switch (getBuildType()) {
-        case 0:
-            return Messages.LastBuildColumn_LastBuild();
-        case 1:
-            return Messages.LastBuildColumn_LastCompletedBuild();
-        case 2:
-            return Messages.LastBuildColumn_LastFailedBuild();
-        case 3:
-            return Messages.LastBuildColumn_LastSuccessfulBuild();
-        case 4:
-            return Messages.LastBuildColumn_LastUnsuccessfulBuild();
-        case 5:
-            return Messages.LastBuildColumn_LastStableBuild();
-        case 6:
-            return Messages.LastBuildColumn_LastUnstableBuild();
-        default:
-            return Messages.LastBuildColumn_LastBuild();
-        }
+        return switch (getBuildType()) {
+            case 1 -> Messages.LastBuildColumn_LastCompletedBuild();
+            case 2 -> Messages.LastBuildColumn_LastFailedBuild();
+            case 3 -> Messages.LastBuildColumn_LastSuccessfulBuild();
+            case 4 -> Messages.LastBuildColumn_LastUnsuccessfulBuild();
+            case 5 -> Messages.LastBuildColumn_LastStableBuild();
+            case 6 -> Messages.LastBuildColumn_LastUnstableBuild();
+            default -> Messages.LastBuildColumn_LastBuild();
+        };
     }
 
     public String getBuildTypeUrl() {
-        switch (getBuildType()) {
-        case 0:
-            return "lastBuild";
-        case 1:
-            return "lastCompletedBuild";
-        case 2:
-            return "lastFailedBuild";
-        case 3:
-            return "lastSuccessfulBuild";
-        case 4:
-            return "lastUnsuccessfulBuild";
-        case 5:
-            return "lastStableBuild";
-        case 6:
-            return "lastUnstableBuild";
-        default:
-            return "lastBuild";
-        }
+        return switch (getBuildType()) {
+            case 1 -> "lastCompletedBuild";
+            case 2 -> "lastFailedBuild";
+            case 3 -> "lastSuccessfulBuild";
+            case 4 -> "lastUnsuccessfulBuild";
+            case 5 -> "lastStableBuild";
+            case 6 -> "lastUnstableBuild";
+            default -> "lastBuild";
+        };
     }
 
     public String getLastBuildStartAbsoluteString(Run<?, ?> build){
@@ -153,7 +127,7 @@ public class LastBuildColumn extends ListViewColumn {
 
     public String getLastBuildEndRelativeString(Run<?, ?> build){
         long duration = new GregorianCalendar().getTimeInMillis()-getBuildEndTimeInMillis(build);
-        return Util.getPastTimeString(duration);
+        return Util.getTimeSpanString(duration);
     }
 
     @Extension
@@ -165,6 +139,7 @@ public class LastBuildColumn extends ListViewColumn {
         }
 
         @Override
+        @NonNull
         public String getDisplayName() {
             return Messages.LastBuildColumn_DisplayName();
         }

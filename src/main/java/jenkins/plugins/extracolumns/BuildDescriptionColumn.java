@@ -24,6 +24,7 @@
 
 package jenkins.plugins.extracolumns;
 
+import edu.umd.cs.findbugs.annotations.NonNull;
 import org.kohsuke.stapler.DataBoundConstructor;
 
 import hudson.Extension;
@@ -33,8 +34,8 @@ import hudson.views.ListViewColumn;
 
 public class BuildDescriptionColumn extends ListViewColumn {
 
-    private int columnWidth;
-    private boolean forceWidth;
+    private final int columnWidth;
+    private final boolean forceWidth;
 
     @DataBoundConstructor
     public BuildDescriptionColumn(int columnWidth, boolean forceWidth) {
@@ -71,6 +72,7 @@ public class BuildDescriptionColumn extends ListViewColumn {
         }
 
         @Override
+        @NonNull
         public String getDisplayName() {
             return Messages.BuildDescriptionColumn_DisplayName();
         }

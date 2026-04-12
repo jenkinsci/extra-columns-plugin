@@ -24,6 +24,7 @@
 
 package jenkins.plugins.extracolumns;
 
+import edu.umd.cs.findbugs.annotations.NonNull;
 import java.util.Collection;
 
 import org.kohsuke.stapler.DataBoundConstructor;
@@ -57,7 +58,7 @@ public class SCMTypeColumn extends ListViewColumn {
                     if (scms.isEmpty()) {
                         return "N/A";
                     }
-                    StringBuilder sb = new StringBuilder();
+                    StringBuilder sb = new StringBuilder( );
                     for (SCM scm : scms) {
                         sb.append(scm.getDescriptor().getDisplayName()).append("\n");
                     }
@@ -77,6 +78,7 @@ public class SCMTypeColumn extends ListViewColumn {
         }
 
         @Override
+        @NonNull
         public String getDisplayName() {
             return Messages.SCMTypeColumn_DisplayName();
         }

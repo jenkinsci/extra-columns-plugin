@@ -23,6 +23,7 @@
  */
 package jenkins.plugins.extracolumns;
 
+import edu.umd.cs.findbugs.annotations.NonNull;
 import org.kohsuke.stapler.DataBoundConstructor;
 
 import hudson.Extension;
@@ -54,6 +55,7 @@ public class UserNameColumn extends ListViewColumn {
         }
 
         @Override
+        @NonNull
         public String getDisplayName() {
             return Messages.UserNameColumn_DisplayName();
         }
