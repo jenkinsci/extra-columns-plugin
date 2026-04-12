@@ -23,6 +23,7 @@
  */
 package jenkins.plugins.extracolumns;
 
+import edu.umd.cs.findbugs.annotations.NonNull;
 import hudson.Extension;
 import hudson.model.AbstractProject;
 import hudson.model.Job;
@@ -67,6 +68,7 @@ public class SlaveOrLabelColumn extends ListViewColumn {
     @Extension
     public static class DescriptorImpl extends ListViewColumnDescriptor {
         @Override
+        @NonNull
         public String getDisplayName() {
             return Messages.SlaveOrLabelColumn_DisplayName();
         }

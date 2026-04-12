@@ -23,6 +23,7 @@
  */
 package jenkins.plugins.extracolumns;
 
+import edu.umd.cs.findbugs.annotations.NonNull;
 import org.kohsuke.stapler.DataBoundConstructor;
 
 import hudson.Extension;
@@ -33,7 +34,7 @@ import hudson.views.ListViewColumnDescriptor;
 
 public class JobTypeColumn extends ListViewColumn {
 
-    private boolean usePronoun;
+    private final boolean usePronoun;
 
     @DataBoundConstructor
     public JobTypeColumn(boolean usePronoun) {
@@ -97,6 +98,7 @@ public class JobTypeColumn extends ListViewColumn {
         }
 
         @Override
+        @NonNull
         public String getDisplayName() {
             return Messages.JobTypeColumn_DisplayName();
         }

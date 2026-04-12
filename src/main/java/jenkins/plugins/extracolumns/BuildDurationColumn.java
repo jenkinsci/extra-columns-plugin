@@ -23,6 +23,7 @@
  */
 package jenkins.plugins.extracolumns;
 
+import edu.umd.cs.findbugs.annotations.NonNull;
 import java.util.GregorianCalendar;
 
 import org.kohsuke.stapler.DataBoundConstructor;
@@ -35,7 +36,7 @@ import hudson.views.ListViewColumnDescriptor;
 
 public class BuildDurationColumn extends ListViewColumn {
 
-    private int buildDurationType = 0;
+    private final int buildDurationType;
 
     @DataBoundConstructor
     public BuildDurationColumn(int buildDurationType) {
@@ -72,6 +73,7 @@ public class BuildDurationColumn extends ListViewColumn {
         }
 
         @Override
+        @NonNull
         public String getDisplayName() {
             return Messages.BuildDurationColumn_DisplayName();
         }

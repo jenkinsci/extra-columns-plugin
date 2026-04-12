@@ -23,6 +23,7 @@
  */
 package jenkins.plugins.extracolumns;
 
+import edu.umd.cs.findbugs.annotations.NonNull;
 import org.kohsuke.stapler.DataBoundConstructor;
 
 import hudson.Extension;
@@ -32,7 +33,7 @@ import hudson.views.ListViewColumnDescriptor;
 
 public class DisableProjectColumn extends ListViewColumn {
 
-    private boolean useIcon;
+    private final boolean useIcon;
 
     @DataBoundConstructor
     public DisableProjectColumn(boolean useIcon) {
@@ -56,6 +57,7 @@ public class DisableProjectColumn extends ListViewColumn {
         }
         
         @Override
+        @NonNull
         public String getDisplayName() {
             return Messages.DisableProjectColumn_DisplayName();
         }
