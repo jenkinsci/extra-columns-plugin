@@ -44,8 +44,8 @@ public class LastBuildNodeColumn extends ListViewColumn {
 
     public String getLastBuildNode(Job<?, ?> job) {
         Run<?, ?> lastBuild = job.getLastBuild();
-        if (lastBuild instanceof AbstractBuild<?, ?>) {
-            Node builtOn = ((AbstractBuild<?, ?>) lastBuild).getBuiltOn();
+        if (lastBuild instanceof AbstractBuild<?, ?> ab) {
+            Node builtOn = ab.getBuiltOn();
             if (builtOn instanceof Jenkins) {
                 return "master";
             }
