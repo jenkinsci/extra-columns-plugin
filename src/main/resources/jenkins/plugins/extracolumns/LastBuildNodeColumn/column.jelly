@@ -25,6 +25,7 @@ THE SOFTWARE.
 <?jelly escape-by-default='true'?>
 <j:jelly xmlns:j="jelly:core" xmlns:st="jelly:stapler"  xmlns:l="/lib/layout">
     <st:adjunct includes="jenkins.plugins.extracolumns.LastBuildNodeColumn.showNodes"/>
+    <st:adjunct includes="jenkins.plugins.extracolumns.LastBuildNodeColumn.showNodesStyle"/>
     <td>
         <j:set var="nodes" value="${it.getLastBuildNodes(job)}" />
         <j:choose>
@@ -41,7 +42,7 @@ THE SOFTWARE.
                 <span>N/A</span>
             </j:when>
             <j:otherwise>
-                <div style="display: flex">
+                <div style="display: flex" id="ec-last-node-container" data-show-text="${%Show all agents}" data-hide-text="${%Hide all agents}">
                     <div>
                         <j:forEach var="node" items="${nodes}" indexVar="index">
                             <div class="${index > 0 ? 'ec-hidden jenkins-hidden' : ''}">
