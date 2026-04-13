@@ -23,7 +23,8 @@ THE SOFTWARE.
 -->
 
 <?jelly escape-by-default='true'?>
-<j:jelly xmlns:j="jelly:core">
+<j:jelly xmlns:j="jelly:core" xmlns:st="jelly:stapler"  xmlns:l="/lib/layout">
+    <st:adjunct includes="jenkins.plugins.extracolumns.LastBuildNodeColumn.showNodes"/>
     <td>
         <j:set var="nodes" value="${it.getLastBuildNodes(job)}" />
         <j:choose>
@@ -40,20 +41,32 @@ THE SOFTWARE.
                 <span>N/A</span>
             </j:when>
             <j:otherwise>
-                <j:forEach var="node" items="${nodes}">
-                    <j:choose>
-                        <j:when test="${'master'eq node}">
-                            <a href="${rootURL}/computer/(master)">Master</a>
-                        </j:when>
-                        <j:when test="${node == null}">
-                            <span>N/A</span>
-                        </j:when>
-                        <j:otherwise>
-                            <a href="${rootURL}/computer/${node}">${node}</a>
-                        </j:otherwise>
-                    </j:choose>
-                    <br/>
-                </j:forEach>
+                <div style="display: flex">
+                    <div>
+                        <j:forEach var="node" items="${nodes}" indexVar="index">
+                            <div class="${index > 0 ? 'ec-hidden jenkins-hidden' : ''}">
+                                <j:choose>
+                                    <j:when test="${'built-in' eq node or '' eq node}">
+                                        <a href="${rootURL}/computer/(built-in)/" class="jenkins-table__link model-link">${%Built-In Node}</a>
+                                    </j:when>
+                                    <j:when test="${node == null}">
+                                        <span>N/A</span>
+                                    </j:when>
+                                    <j:otherwise>
+                                        <a href="${rootURL}/computer/${node}/" class="jenkins-table__link model-link">${node}</a>
+                                    </j:otherwise>
+                                </j:choose>
+                            </div>
+                        </j:forEach>
+                    </div>
+                    <j:if test="${nodes.size() > 1}">
+                        <div class="ec-list__button">
+                            <button class="jenkins-button toggle-flow-nodes" tooltip="${%Show nodes}" data-hidden="true">
+                                <l:icon src="symbol-chevron-down" id="chevron-down" alt="${%Show all Agents}"/>
+                            </button>
+                        </div>
+                    </j:if>
+                </div>
             </j:otherwise>
         </j:choose>
     </td>
