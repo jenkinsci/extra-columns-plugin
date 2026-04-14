@@ -23,6 +23,7 @@
  */
 package jenkins.plugins.extracolumns;
 
+import edu.umd.cs.findbugs.annotations.NonNull;
 import hudson.Extension;
 import hudson.model.AbstractProject;
 import hudson.model.Job;
@@ -48,13 +49,12 @@ public class SlaveOrLabelColumn extends ListViewColumn {
     }
 
     public Label getLabel(Job<?, ?> job) {
-        if(!(job instanceof AbstractProject)){
+        if(!(job instanceof AbstractProject<?, ?> ap)){
             LOGGER.finest("Not an instance of " + AbstractProject.class.getCanonicalName() + ". Cannot get info.");
             return null;
         }
         
-        AbstractProject<?, ?> project = AbstractProject.class.cast(job);
-        return project.getAssignedLabel();
+        return ap.getAssignedLabel();
     }
 
     public String getDescription(Label label) {
@@ -62,12 +62,13 @@ public class SlaveOrLabelColumn extends ListViewColumn {
             return "";
         }
         String desc = label.getDescription();
-        return (desc == null || desc.length() < 1) ? "" : "(" + desc + ")";
+        return (desc == null || desc.isEmpty()) ? "" : "(" + desc + ")";
     }
 
     @Extension
     public static class DescriptorImpl extends ListViewColumnDescriptor {
         @Override
+        @NonNull
         public String getDisplayName() {
             return Messages.SlaveOrLabelColumn_DisplayName();
         }

@@ -23,6 +23,7 @@
  */
 package jenkins.plugins.extracolumns;
 
+import edu.umd.cs.findbugs.annotations.NonNull;
 import org.kohsuke.stapler.DataBoundConstructor;
 
 import hudson.Extension;
@@ -69,6 +70,7 @@ public class TestResultColumn extends ListViewColumn {
         }
 
         @Override
+        @NonNull
         public String getDisplayName() {
             return Messages.TestResultColumn_DisplayName();
         }

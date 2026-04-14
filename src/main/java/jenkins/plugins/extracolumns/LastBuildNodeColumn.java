@@ -23,6 +23,7 @@
  */
 package jenkins.plugins.extracolumns;
 
+import edu.umd.cs.findbugs.annotations.NonNull;
 import jenkins.model.Jenkins;
 
 import org.kohsuke.stapler.DataBoundConstructor;
@@ -44,8 +45,8 @@ public class LastBuildNodeColumn extends ListViewColumn {
 
     public String getLastBuildNode(Job<?, ?> job) {
         Run<?, ?> lastBuild = job.getLastBuild();
-        if (lastBuild instanceof AbstractBuild<?, ?>) {
-            Node builtOn = ((AbstractBuild<?, ?>) lastBuild).getBuiltOn();
+        if (lastBuild instanceof AbstractBuild<?, ?> ab) {
+            Node builtOn = ab.getBuiltOn();
             if (builtOn instanceof Jenkins) {
                 return "master";
             }
@@ -74,6 +75,7 @@ public class LastBuildNodeColumn extends ListViewColumn {
         }
 
         @Override
+        @NonNull
         public String getDisplayName() {
             return Messages.LastBuildNodeColumn_DisplayName();
         }

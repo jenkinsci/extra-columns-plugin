@@ -24,6 +24,7 @@
 
 package jenkins.plugins.extracolumns;
 
+import edu.umd.cs.findbugs.annotations.NonNull;
 import java.text.DateFormat;
 import java.util.Calendar;
 import java.util.Map;
@@ -33,7 +34,6 @@ import java.util.logging.Logger;
 import org.kohsuke.stapler.DataBoundConstructor;
 
 import hudson.Extension;
-import hudson.model.AbstractProject;
 import hudson.model.Job;
 import hudson.scheduler.CronTabList;
 import hudson.scheduler.Hash;
@@ -61,10 +61,8 @@ public class CronTriggerColumn extends ListViewColumn {
         }
 
         Map<TriggerDescriptor, Trigger<?>> triggers = null;
-        if (job instanceof AbstractProject) {
-            triggers  = ((AbstractProject<?, ?>) job).getTriggers();
-        } if (job instanceof ParameterizedJobMixIn.ParameterizedJob) {
-            triggers = ((ParameterizedJobMixIn.ParameterizedJob)job).getTriggers();
+        if (job instanceof ParameterizedJobMixIn.ParameterizedJob<?, ?> pj) {
+            triggers = pj.getTriggers();
         }
 
         if (triggers == null) {
@@ -97,9 +95,6 @@ public class CronTriggerColumn extends ListViewColumn {
         try {
             // The logic here follows the one used in TimerTrigger to show a similar message in the job configuration page
             CronTabList ctl = CronTabList.create(cronTrigger, Hash.from(job.getFullName()));
-            if (ctl == null) {
-                return toolTip;
-            }
             DateFormat fmt = DateFormat.getDateTimeInstance(DateFormat.FULL, DateFormat.FULL);
             // TODO: problems with Maven access-modifier enforcement check
             Calendar previous = ctl.previous();
@@ -124,6 +119,7 @@ public class CronTriggerColumn extends ListViewColumn {
         }
 
         @Override
+        @NonNull
         public String getDisplayName() {
             return Messages.CronTriggerColumn_DisplayName();
         }

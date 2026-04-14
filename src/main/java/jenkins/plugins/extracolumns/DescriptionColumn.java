@@ -24,6 +24,7 @@
 
 package jenkins.plugins.extracolumns;
 
+import edu.umd.cs.findbugs.annotations.NonNull;
 import org.jenkinsci.Symbol;
 import org.kohsuke.stapler.DataBoundConstructor;
 
@@ -34,11 +35,11 @@ import hudson.views.ListViewColumn;
 
 public class DescriptionColumn extends ListViewColumn {
 
-    private boolean displayName;
-    private boolean trim;
-    private int displayLength; //numbers of lines to display
-    private int columnWidth;
-    private boolean forceWidth;
+    private final boolean displayName;
+    private final boolean trim;
+    private final int displayLength; //numbers of lines to display
+    private final int columnWidth;
+    private final boolean forceWidth;
 
     private final static String SEPARATOR = "<br/>";
     private final static String SEPARATORS_REGEX = "(?i)<br\\s*/>|<br>";
@@ -93,7 +94,7 @@ public class DescriptionColumn extends ListViewColumn {
             return "";
         }
 
-        StringBuffer sb = new StringBuffer();
+        StringBuilder sb = new StringBuilder();
         if (!trimIt) {
             sb.append(job.getDescription());
         } else {
@@ -119,6 +120,7 @@ public class DescriptionColumn extends ListViewColumn {
         }
 
         @Override
+        @NonNull
         public String getDisplayName() {
             return Messages.DescriptionColumn_DisplayName();
         }

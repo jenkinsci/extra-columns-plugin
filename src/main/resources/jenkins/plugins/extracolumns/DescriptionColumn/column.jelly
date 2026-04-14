@@ -30,10 +30,10 @@
   <j:set var="widthAttribute" value="width: ${it.getColumnWidth()}px;word-wrap: break-word;white-space:normal;"/>
   <td>
     <j:if test="${it.isDisplayName()}">
-      <a href="${jobBaseUrl}${job.shortUrl}" class='model-link inside'>${relativeDisplayName != null ? relativeDisplayName : job.displayName}</a><br/>
+      <a href="${jobBaseUrl}${job.shortUrl}" class='jenkins-table__link model-link inside'>${relativeDisplayName != null ? relativeDisplayName : job.displayName}</a><br/>
     </j:if>
-    <div tooltip="${app.markupFormatter.translate(tooltipdesc)}" style="${it.isForceWidth() ? widthAttribute : null}">
-      <j:out value="${app.markupFormatter.translate(desc)}"/>
+    <div style="${it.isForceWidth() ? widthAttribute : null}">
+      <span tooltip="${app.markupFormatter.translate(tooltipdesc)}"><j:out value="${app.markupFormatter.translate(desc)}"/></span>
     </div>
   </td>
 </j:jelly>

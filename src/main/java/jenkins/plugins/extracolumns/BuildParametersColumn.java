@@ -24,6 +24,7 @@
 
 package jenkins.plugins.extracolumns;
 
+import edu.umd.cs.findbugs.annotations.NonNull;
 import hudson.Extension;
 import hudson.model.Action;
 import hudson.model.ParameterValue;
@@ -41,8 +42,8 @@ import org.kohsuke.stapler.DataBoundConstructor;
 
 public class BuildParametersColumn extends ListViewColumn {
 
-    private boolean useRegex;
-    private String regex;
+    private final boolean useRegex;
+    private final String regex;
 
     @DataBoundConstructor
     public BuildParametersColumn(boolean useRegex, String regex) {
@@ -68,10 +69,9 @@ public class BuildParametersColumn extends ListViewColumn {
             return Collections.singletonList("");
         }
         Run<?, ?> r = job.getLastBuild();
-        List<String> strings = new ArrayList<String>();
+        List<String> strings = new ArrayList<>();
         for(Action action : r.getAllActions()) {
-            if(action instanceof ParametersAction) {
-                ParametersAction pa = (ParametersAction)action;
+            if(action instanceof ParametersAction pa) {
                 for (ParameterValue p : pa.getParameters()) {
                     if(!isUseRegex() || p.getName().matches(regex)){
                         strings.add(p.getShortDescription());
@@ -91,6 +91,7 @@ public class BuildParametersColumn extends ListViewColumn {
         }
 
         @Override
+        @NonNull
         public String getDisplayName() {
             return Messages.BuildParametersColumn_DisplayName();
         }

@@ -24,6 +24,7 @@
 
 package jenkins.plugins.extracolumns;
 
+import edu.umd.cs.findbugs.annotations.NonNull;
 import hudson.Extension;
 import hudson.XmlFile;
 import hudson.model.Job;
@@ -70,6 +71,7 @@ public class LastJobConfigurationModificationColumn extends ListViewColumn {
     @Extension
     public static class DescriptorImpl extends ListViewColumnDescriptor {
         @Override
+        @NonNull
         public String getDisplayName() {
             return Messages.LastJobConfigurationModificationColumn_DisplayName();
         }

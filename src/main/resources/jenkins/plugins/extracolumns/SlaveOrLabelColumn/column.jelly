@@ -30,7 +30,8 @@
     <j:choose>
       <j:when test="${label == null}">N/A</j:when>
       <j:when test="${label.equals('')}">N/A</j:when>
-      <j:when test="${label.isSelfLabel()}"><a href="${rootURL}/computer/${label.getName()}">${label.getName()}</a></j:when>
+      <j:when test="${label.isSelfLabel()}"><a href="${rootURL}/computer/${label.getName()}" class="jenkins-table__link model-link">${label.getName()}</a></j:when>
+      <j:when test="${!label.isSelfLabel()}"><a href="${rootURL}/label/${label.getName()}" class="jenkins-table__link model-link">${label.getName()}</a></j:when>
       <j:otherwise>${label.getName()} ${desc}</j:otherwise>
     </j:choose>
   </td>

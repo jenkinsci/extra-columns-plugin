@@ -24,7 +24,5 @@
 
 <?jelly escape-by-default='true'?>
 <j:jelly xmlns:j="jelly:core" xmlns:f="/lib/form">
-    <f:block>
-        <p>${%This column shows the date of the last job configuration modification.}</p>
-    </f:block>
+   <p>${%This column shows the date of the last job configuration modification.}</p>
 </j:jelly>

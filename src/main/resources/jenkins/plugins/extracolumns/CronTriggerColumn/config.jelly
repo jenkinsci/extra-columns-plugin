@@ -26,11 +26,5 @@
 <j:jelly xmlns:j="jelly:core" xmlns:st="jelly:stapler" xmlns:d="jelly:define"
     xmlns:l="/lib/layout" xmlns:t="/lib/hudson" xmlns:f="/lib/form"
     xmlns:i="jelly:fmt" xmlns:p="/lib/hudson/project">
-    <f:block>
-        <table>
-            <tr>
-                <td colspan="3">${%This column shows the periodic build trigger for the job in cron format.}</td>
-            </tr>
-        </table>
-    </f:block>
+  <p>${%This column shows the periodic build trigger for the job in cron format.}</p>
 </j:jelly>

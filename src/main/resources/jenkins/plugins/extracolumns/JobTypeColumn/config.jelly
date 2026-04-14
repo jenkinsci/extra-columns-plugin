@@ -24,17 +24,7 @@ THE SOFTWARE.
 
 <?jelly escape-by-default='true'?>
 <j:jelly xmlns:j="jelly:core" xmlns:st="jelly:stapler" xmlns:d="jelly:define" xmlns:l="/lib/layout" xmlns:t="/lib/hudson" xmlns:f="/lib/form" xmlns:i="jelly:fmt">
-    <f:block>
-        <tr>
-            <td width="50">
-                
-            </td>
-            <td colspan="2">
-                <p>${%This column shows the type of the job, eg. Free-style, Maven, Multi-config, Pipeline.}</p>
-                <f:entry>
-                    <f:checkbox field="usePronoun" title="${%Use pronoun}" />
-                </f:entry>
-            </td>
-        </tr>
-    </f:block>
+  <f:entry title="${%This column shows the type of the job, eg. Free-style, Maven, Multi-config, Pipeline.}">
+    <f:checkbox field="usePronoun" title="${%Use pronoun}" />
+  </f:entry>
 </j:jelly>
