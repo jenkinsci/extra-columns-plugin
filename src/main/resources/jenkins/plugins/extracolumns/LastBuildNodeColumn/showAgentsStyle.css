@@ -1,0 +1,7 @@
+.ec-list__button > button {
+  padding: 0.3rem 0.3rem !important;
+}
+
+.ec-list__button button[data-hidden=false] {
+    rotate: 180deg;
+}
