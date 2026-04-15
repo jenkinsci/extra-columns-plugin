@@ -39,20 +39,20 @@ THE SOFTWARE.
                             <div class="${index > 0 ? 'ec-hidden jenkins-hidden' : ''}">
                                 <j:choose>
                                     <j:when test="${'built-in' eq agent or '' eq agent}">
-                                        <a href="${rootURL}/computer/(built-in)/" class="jenkins-table__link model-link ec-agent-link">${%Built-In Node}</a>
+                                        <a href="${rootURL}/computer/(built-in)/" class="jenkins-table__link model-link jenkins-!-margin-top-1">${%Built-In Node}</a>
                                     </j:when>
                                     <j:when test="${agent == null}">
                                         <span>N/A</span>
                                     </j:when>
                                     <j:otherwise>
-                                        <a href="${rootURL}/computer/${agent}/" class="jenkins-table__link model-link ec-agent-link" data-html-tooltip="${app.markupFormatter.translate(it.getLastBuildNodeDescription(job))}">${agent}</a>
+                                        <a href="${rootURL}/computer/${agent}/" class="jenkins-table__link model-link jenkins-!-margin-top-1" data-html-tooltip="${app.markupFormatter.translate(it.getLastBuildNodeDescription(job))}">${agent}</a>
                                     </j:otherwise>
                                 </j:choose>
                             </div>
                         </j:forEach>
                     </div>
                     <j:if test="${agents.size() > 1}">
-                        <div class="ec-list__button">
+                        <div class="ec-list__button jenkins-!-margin-top-1">
                             <button class="jenkins-button" tooltip="${%Show all agents}" data-hidden="true">
                                 <l:icon src="symbol-chevron-down" id="chevron-down" alt="${%Show all agents}"/>
                             </button>
