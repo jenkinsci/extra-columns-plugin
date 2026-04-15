@@ -65,7 +65,7 @@ public class LastBuildNodeColumn extends ListViewColumn {
         return null;
     }
 
-    public Set<String> getLastBuildNodes(Job<?, ?> job) {
+    public Set<String> getLastBuildAgents(Job<?, ?> job) {
         Run<?, ?> lastBuild = job.getLastBuild();
         if (lastBuild instanceof AbstractBuild<?, ?> ab) {
             Node builtOn = ab.getBuiltOn();

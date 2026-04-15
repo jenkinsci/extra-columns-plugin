@@ -2,7 +2,7 @@ Behaviour.specify(".ec-list__button button", "ec-list__button", 0, function(butt
   button.onclick = function() {
     let tr = button.closest("tr");
     console.log(button)
-    let container = button.closest("#ec-last-node-container");
+    let container = button.closest("#ec-last-agent-container");
     let rows = tr.querySelectorAll(".ec-hidden");
     for (row of rows) {
       row.classList.toggle("jenkins-hidden");
