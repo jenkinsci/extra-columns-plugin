@@ -48,7 +48,7 @@ public class LastBuildNodeColumn extends ListViewColumn {
     }
 
     /**
-     * @deprecated Please use getLastBuildNodes
+     * @deprecated Please use getLastBuildAgents
     */
     @Deprecated
     public String getLastBuildNode(Job<?, ?> job) {
