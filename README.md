@@ -4,8 +4,8 @@
 [![GitHub release](https://img.shields.io/github/release/jenkinsci/extra-columns-plugin.svg?label=release)](https://github.com/jenkinsci/extra-columns-plugin/releases/latest)
 [![Jenkins Plugin Installs](https://img.shields.io/jenkins/plugin/i/extra-columns.svg?color=blue)](https://plugins.jenkins.io/extra-columns)
 [![Build Status](https://ci.jenkins.io/buildStatus/icon?job=Plugins%2Fextra-columns-plugin%2Fmaster)](https://ci.jenkins.io/job/Plugins/job/extra-columns-plugin/job/master/)
-[![GitHub license](https://img.shields.io/github/license/jenkinsci/extra-columns-plugin.svg)](https://github.com/jenkinsci/extra-columns-plugin/blob/master/LICENSE.txt)
-[![Maintenance](https://img.shields.io/maintenance/yes/2024.svg)](https://github.com/jenkinsci/extra-columns-plugin)
+[![GitHub license](https://img.shields.io/github/license/jenkinsci/extra-columns-plugin)](https://github.com/jenkinsci/extra-columns-plugin/blob/master/LICENSE)
+[![Maintenance](https://img.shields.io/badge/maintained-yes_(as_of_2026)-green)](https://github.com/jenkinsci/extra-columns-plugin)
 
 ## Note
 Older versions of this plugin may not be safe to use. Please review the following warnings before using an older version:
