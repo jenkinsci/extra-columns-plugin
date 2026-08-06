@@ -23,19 +23,43 @@ THE SOFTWARE.
 -->
 
 <?jelly escape-by-default='true'?>
-<j:jelly xmlns:j="jelly:core">
+<j:jelly xmlns:j="jelly:core" xmlns:st="jelly:stapler"  xmlns:l="/lib/layout">
+    <st:adjunct includes="jenkins.plugins.extracolumns.LastBuildNodeColumn.showAgents"/>
+    <st:adjunct includes="jenkins.plugins.extracolumns.LastBuildNodeColumn.showAgentsStyle"/>
     <td>
-        <j:set var="node" value="${it.getLastBuildNode(job)}" />
+        <j:set var="agents" value="${it.getLastBuildAgents(job)}" />
         <j:choose>
-          <j:when test="${'master' eq node}">
-              <a href="${rootURL}/computer/(built-in)/" class="jenkins-table__link model-link">${%Built-In Node}</a>
-          </j:when>
-          <j:when test="${node == null}">
-              <span>N/A</span>
-          </j:when>
-          <j:otherwise>
-              <a href="${rootURL}/computer/${node}" class="jenkins-table__link model-link" data-html-tooltip="${app.markupFormatter.translate(it.getLastBuildNodeDescription(job))}">${node}</a>
-          </j:otherwise>
+            <j:when test="${agents.isEmpty()}">
+                <span>N/A</span>
+            </j:when>
+            <j:otherwise>
+                <div style="display: flex;" id="ec-last-agent-container" data-show-text="${%Show all agents}" data-hide-text="${%Hide all agents}">
+                    <div>
+                        <j:forEach var="agent" items="${agents}" indexVar="index">
+                            <div class="${index > 0 ? 'ec-hidden jenkins-hidden' : ''}">
+                                <j:choose>
+                                    <j:when test="${'built-in' eq agent or '' eq agent}">
+                                        <a href="${rootURL}/computer/(built-in)/" class="jenkins-table__link model-link jenkins-!-margin-top-1">${%Built-In Node}</a>
+                                    </j:when>
+                                    <j:when test="${agent == null}">
+                                        <span>N/A</span>
+                                    </j:when>
+                                    <j:otherwise>
+                                        <a href="${rootURL}/computer/${agent}/" class="jenkins-table__link model-link jenkins-!-margin-top-1" data-html-tooltip="${app.markupFormatter.translate(it.getLastBuildNodeDescription(job))}">${agent}</a>
+                                    </j:otherwise>
+                                </j:choose>
+                            </div>
+                        </j:forEach>
+                    </div>
+                    <j:if test="${agents.size() > 1}">
+                        <div class="ec-list__button jenkins-!-margin-top-1">
+                            <button class="jenkins-button" tooltip="${%Show all agents}" data-hidden="true">
+                                <l:icon src="symbol-chevron-down" id="chevron-down" alt="${%Show all agents}"/>
+                            </button>
+                        </div>
+                    </j:if>
+                </div>
+            </j:otherwise>
         </j:choose>
     </td>
 </j:jelly>
